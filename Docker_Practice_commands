@@ -1,0 +1,160 @@
+[Thursday 22:58] Datt, Amba (External)
+  653  docker pull nginx
+
+  654  clear
+
+  655  docker pull nginx
+
+  656  docker images
+
+  657  docker run --detach --name webserver nginx
+
+  658  docker container ls
+
+  659  docker exec -it webserver bash
+
+  660  docker container ls
+
+  661  docker run --name webserver1 nginx
+
+  662  docker ps
+
+  663  docker ps -a
+
+  664  docker rm webserver1
+
+  665  docker run --name webserver1 nginx
+
+  666  docker ps -a
+
+  667  docker ps
+
+  668  docker run --name webserver nginx
+
+  669  docker run --name webserver2 nginx
+
+  670  docker ps
+
+  671  docker ps -a
+
+  672  docker start webserver2
+
+  673  docker ps
+
+  674  docker exec -it webserver2 bash
+
+  675  docker ps
+
+  676  docker container inspect webserver2
+
+  677  cat /var/lib/docker/containers/b75f145c6f9bec042c60141b0a6ff2be04a5bbb1d0be8abaadcbf6286dfb65e3/resolv.conf
+
+  678  docker container inspect webserver2
+
+  679  cat /var/lib/docker/containers/b75f145c6f9bec042c60141b0a6ff2be04a5bbb1d0be8abaadcbf6286dfb65e3/hostname
+
+  680  docker container inspect webserver2
+
+  681  docker events
+
+  682  docker logs webserver
+
+  683  docker logs webserver2
+
+  684  history
+
+root@Docker-Host:~#
+
+ 
+[Thursday 23:04] Datt, Amba (External)
+http://161.35.49.178:8888/
+ 
+[Thursday 23:34] Datt, Amba (External)
+  611  docker commit testwebserver2 custome_testwebserver
+
+  612  docker images
+
+  613  docker commit testwebserver2 snapshot
+
+  614  docker imgaes
+
+  615  docker images
+
+  616  docker run -dt -p 8889:80 --name containerbyyogesh  snapshot
+
+  617  docker ps
+
+  618  docker image history  snapshot
+
+  619  docker image history nginx
+
+  620  docker run -dt -p 8889:80 --name containerbyyogesh1  snapshot -c p 100
+
+  621  docker run -dt -p 8889:80 --name containerbyyogesh1  snapshot -c ping www.google.com
+
+  622  docker run -dt -p 8889:80 --name containerbyyogesh2  snapshot -c ls
+
+  623  docker run -dt -p 8889:80 --name containerbyyogesh2  snapshot
+
+  624  docker imgaes
+
+  625  docker images
+
+  626  docker image history nginx
+
+  627  docker image inspect nginx
+
+  628  docker image
+
+  629  docker image ls
+
+  630  docker image history
+
+  631  docker image history nginx
+
+  632  docker images
+
+  633  docker login
+
+  634  docker logout
+
+  635  docker login
+
+  636  docker images
+
+  637  docker push snapshot
+
+  638  /home/
+
+  639  docker mv snapshot ambadatt/snapshot
+
+  640  docker image snapshot ambadatt/snapshot
+
+  641  docker image -tag snapshot ambadatt/snapshot
+
+  642  docker image snapshot -tag ambadatt/snapshot
+
+  643  docker ps
+
+  644  docker commit containerbyyogesh ambadatt/containerbyyogesh
+
+  645  docker images
+
+  646  docker push ambadatt/containerbyyogesh
+
+  647  docker rmi ambadatt/containerbyyogesh
+
+  648  docker pull ambadatt/containerbyyogesh
+
+  649  docker image history ambadatt/containerbyyogesh
+
+  650  docker images ls
+
+  651  docker images
+
+  652  history
+
+root@Docker-Host:~#
+
+Google
+ 
