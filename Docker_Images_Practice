@@ -1,0 +1,296 @@
+       Welcome to the KodeKloud Hands-On lab                                                                                        
+    __ ______  ____  ________ __ __    ____  __  ______ 
+   / //_/ __ \/ __ \/ ____/ //_// /   / __ \/ / / / __ \
+  / ,< / / / / / / / __/ / ,<  / /   / / / / / / / / / /
+ / /| / /_/ / /_/ / /___/ /| |/ /___/ /_/ / /_/ / /_/ / 
+/_/ |_\____/_____/_____/_/ |_/_____/\____/\____/_____/  
+                                                        
+              All rights reserved                                                                                                    
+
+~ ➜  docker images
+REPOSITORY                      TAG       IMAGE ID       CREATED        SIZE
+alpine                          latest    91ef0af61f39   5 months ago   7.79MB
+nginx                           alpine    c7b4f26a7d93   6 months ago   43.2MB
+nginx                           latest    39286ab8a5e1   6 months ago   188MB
+postgres                        latest    b781f3a53e61   6 months ago   432MB
+ubuntu                          latest    edbfe74c41f8   6 months ago   78MB
+redis                           latest    590b81f2fea1   7 months ago   117MB
+mysql                           latest    a82a8f162e18   7 months ago   586MB
+kodekloud/simple-webapp-mysql   latest    129dd9f67367   6 years ago    96.6MB
+kodekloud/simple-webapp         latest    c6e3cd9aae36   6 years ago    84.8MB
+
+~ ➜  docker images
+REPOSITORY                      TAG       IMAGE ID       CREATED        SIZE
+alpine                          latest    91ef0af61f39   5 months ago   7.79MB
+nginx                           alpine    c7b4f26a7d93   6 months ago   43.2MB
+nginx                           latest    39286ab8a5e1   6 months ago   188MB
+postgres                        latest    b781f3a53e61   6 months ago   432MB
+ubuntu                          latest    edbfe74c41f8   6 months ago   78MB
+redis                           latest    590b81f2fea1   7 months ago   117MB
+mysql                           latest    a82a8f162e18   7 months ago   586MB
+kodekloud/simple-webapp-mysql   latest    129dd9f67367   6 years ago    96.6MB
+kodekloud/simple-webapp         latest    c6e3cd9aae36   6 years ago    84.8MB
+
+~ ➜  docker images
+REPOSITORY                      TAG           IMAGE ID       CREATED        SIZE
+alpine                          latest        91ef0af61f39   5 months ago   7.79MB
+nginx                           alpine        c7b4f26a7d93   6 months ago   43.2MB
+nginx                           latest        39286ab8a5e1   6 months ago   188MB
+postgres                        latest        b781f3a53e61   6 months ago   432MB
+ubuntu                          latest        edbfe74c41f8   6 months ago   78MB
+redis                           latest        590b81f2fea1   7 months ago   117MB
+mysql                           latest        a82a8f162e18   7 months ago   586MB
+nginx                           1.14-alpine   8a2fb25a19f5   5 years ago    16MB
+kodekloud/simple-webapp-mysql   latest        129dd9f67367   6 years ago    96.6MB
+kodekloud/simple-webapp         latest        c6e3cd9aae36   6 years ago    84.8MB
+
+~ ➜  pwd
+/root
+
+~ ➜  ls -ltr
+total 4
+drwxr-xr-x    4 root     root          4096 Feb 25 10:17 webapp-color
+
+~ ➜  cd webapp-color 
+
+webapp-color on  docker-images via 🐍 ➜  ls -ltr
+total 16
+drwxr-xr-x    2 root     root          4096 Feb 25 10:17 templates
+-rw-r--r--    1 root     root             5 Feb 25 10:17 requirements.txt
+-rw-r--r--    1 root     root          2259 Feb 25 10:17 app.py
+-rw-r--r--    1 root     root           113 Feb 25 10:17 Dockerfile
+
+webapp-color on  docker-images via 🐍 ➜  cat Dockerfile 
+FROM python:3.6
+
+RUN pip install flask
+
+COPY . /opt/
+
+EXPOSE 8080
+
+WORKDIR /opt
+
+ENTRYPOINT ["python", "app.py"]
+
+webapp-color on  docker-images via 🐍 ➜  ./app.py 
+zsh: permission denied: ./app.py
+
+webapp-color on  docker-images via 🐍 ✖ sudo su
+
+webapp-color on  docker-images via 🐍 ➜  whoami
+root
+
+webapp-color on  docker-images via 🐍 ➜  ./app.py 
+zsh: permission denied: ./app.py
+
+webapp-color on  docker-images via 🐍 ✖ chmod 777 app.py 
+
+webapp-color on  docker-images [!] via 🐍 ➜  ./app.py        
+./app.py: line 1: from: not found
+./app.py: line 2: from: not found
+./app.py: line 3: import: not found
+./app.py: line 4: import: not found
+./app.py: line 5: import: not found
+./app.py: line 6: import: not found
+./app.py: line 8: syntax error: unexpected "("
+
+webapp-color on  docker-images [!] via 🐍 ✖ docker run -f Dockerfile
+unknown shorthand flag: 'f' in -f
+See 'docker run --help'.
+
+webapp-color on  docker-images [!] via 🐍 ✖ docker run -f /root/webapp-color/Dockerfile
+unknown shorthand flag: 'f' in -f
+See 'docker run --help'.
+
+webapp-color on  docker-images [!] via 🐍 ✖ docker build -t Dockerfile                 
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            BuildKit is currently disabled; enable it by removing the DOCKER_BUILDKIT=0
+            environment-variable.
+
+invalid argument "Dockerfile" for "-t, --tag" flag: invalid reference format: repository name (library/Dockerfile) must be lowercase
+See 'docker build --help'.
+
+webapp-color on  docker-images [!] via 🐍 ✖ docker build -t webapp-color
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            BuildKit is currently disabled; enable it by removing the DOCKER_BUILDKIT=0
+            environment-variable.
+
+"docker build" requires exactly 1 argument.
+See 'docker build --help'.
+
+Usage:  docker build [OPTIONS] PATH | URL | -
+
+Build an image from a Dockerfile
+
+webapp-color on  docker-images [!] via 🐍 ✖ docker images               
+REPOSITORY                      TAG           IMAGE ID       CREATED        SIZE
+alpine                          latest        91ef0af61f39   5 months ago   7.79MB
+nginx                           alpine        c7b4f26a7d93   6 months ago   43.2MB
+nginx                           latest        39286ab8a5e1   6 months ago   188MB
+postgres                        latest        b781f3a53e61   6 months ago   432MB
+ubuntu                          latest        edbfe74c41f8   6 months ago   78MB
+redis                           latest        590b81f2fea1   7 months ago   117MB
+mysql                           latest        a82a8f162e18   7 months ago   586MB
+nginx                           1.14-alpine   8a2fb25a19f5   5 years ago    16MB
+kodekloud/simple-webapp-mysql   latest        129dd9f67367   6 years ago    96.6MB
+kodekloud/simple-webapp         latest        c6e3cd9aae36   6 years ago    84.8MB
+
+webapp-color on  docker-images [!] via 🐍 ➜  docker build -t webapp-color .
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            BuildKit is currently disabled; enable it by removing the DOCKER_BUILDKIT=0
+            environment-variable.
+
+Sending build context to Docker daemon  65.02kB
+Step 1/6 : FROM python:3.6
+3.6: Pulling from library/python
+0e29546d541c: Pull complete 
+9b829c73b52b: Pull complete 
+cb5b7ae36172: Pull complete 
+6494e4811622: Pull complete 
+6f9f74896dfa: Pull complete 
+5e3b1213efc5: Pull complete 
+9fddfdc56334: Pull complete 
+404f02044bac: Pull complete 
+c4f42be2be53: Pull complete 
+Digest: sha256:f8652afaf88c25f0d22354d547d892591067aa4026a7fa9a6819df9f300af6fc
+Status: Downloaded newer image for python:3.6
+ ---> 54260638d07c
+Step 2/6 : RUN pip install flask
+ ---> Running in eac78caa18ba
+Collecting flask
+  Downloading Flask-2.0.3-py3-none-any.whl (95 kB)
+Collecting Werkzeug>=2.0
+  Downloading Werkzeug-2.0.3-py3-none-any.whl (289 kB)
+Collecting itsdangerous>=2.0
+  Downloading itsdangerous-2.0.1-py3-none-any.whl (18 kB)
+Collecting click>=7.1.2
+  Downloading click-8.0.4-py3-none-any.whl (97 kB)
+Collecting Jinja2>=3.0
+  Downloading Jinja2-3.0.3-py3-none-any.whl (133 kB)
+Collecting importlib-metadata
+  Downloading importlib_metadata-4.8.3-py3-none-any.whl (17 kB)
+Collecting MarkupSafe>=2.0
+  Downloading MarkupSafe-2.0.1-cp36-cp36m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl (30 kB)
+Collecting dataclasses
+  Downloading dataclasses-0.8-py3-none-any.whl (19 kB)
+Collecting zipp>=0.5
+  Downloading zipp-3.6.0-py3-none-any.whl (5.3 kB)
+Collecting typing-extensions>=3.6.4
+  Downloading typing_extensions-4.1.1-py3-none-any.whl (26 kB)
+Installing collected packages: zipp, typing-extensions, MarkupSafe, importlib-metadata, dataclasses, Werkzeug, Jinja2, itsdangerous, click, flask
+Successfully installed Jinja2-3.0.3 MarkupSafe-2.0.1 Werkzeug-2.0.3 click-8.0.4 dataclasses-0.8 flask-2.0.3 importlib-metadata-4.8.3 itsdangerous-2.0.1 typing-extensions-4.1.1 zipp-3.6.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+WARNING: You are using pip version 21.2.4; however, version 21.3.1 is available.
+You should consider upgrading via the '/usr/local/bin/python -m pip install --upgrade pip' command.
+ ---> Removed intermediate container eac78caa18ba
+ ---> 864e3c741b36
+Step 3/6 : COPY . /opt/
+ ---> 91c90a02c1f9
+Step 4/6 : EXPOSE 8080
+ ---> Running in 5fc6697d06bd
+ ---> Removed intermediate container 5fc6697d06bd
+ ---> c40db62e1348
+Step 5/6 : WORKDIR /opt
+ ---> Running in 2b2edde4315f
+ ---> Removed intermediate container 2b2edde4315f
+ ---> 671500a3def5
+Step 6/6 : ENTRYPOINT ["python", "app.py"]
+ ---> Running in d686052ffdae
+ ---> Removed intermediate container d686052ffdae
+ ---> 0bd02cad40cb
+Successfully built 0bd02cad40cb
+Successfully tagged webapp-color:latest
+
+webapp-color on  docker-images [!] via 🐍 ➜  
+
+webapp-color on  docker-images [!] via 🐍 ➜  
+
+webapp-color on  docker-images [!] via 🐍 ➜  docker images                 
+REPOSITORY                      TAG           IMAGE ID       CREATED              SIZE
+webapp-color                    latest        0bd02cad40cb   About a minute ago   913MB
+alpine                          latest        91ef0af61f39   5 months ago         7.79MB
+nginx                           alpine        c7b4f26a7d93   6 months ago         43.2MB
+nginx                           latest        39286ab8a5e1   6 months ago         188MB
+postgres                        latest        b781f3a53e61   6 months ago         432MB
+ubuntu                          latest        edbfe74c41f8   6 months ago         78MB
+redis                           latest        590b81f2fea1   7 months ago         117MB
+mysql                           latest        a82a8f162e18   7 months ago         586MB
+python                          3.6           54260638d07c   3 years ago          902MB
+nginx                           1.14-alpine   8a2fb25a19f5   5 years ago          16MB
+kodekloud/simple-webapp-mysql   latest        129dd9f67367   6 years ago          96.6MB
+kodekloud/simple-webapp         latest        c6e3cd9aae36   6 years ago          84.8MB
+
+webapp-color on  docker-images [!] via 🐍 ➜  docker run -d -p 8282:8080 webapp-color    
+91e5e51c1dfbcf9c8745f5d13dd61c3b8f993873fe31a31a6874076175379363
+
+webapp-color on  docker-images [!] via 🐍 ➜  docker ps                              
+CONTAINER ID   IMAGE          COMMAND           CREATED         STATUS         PORTS                                       NAMES
+91e5e51c1dfb   webapp-color   "python app.py"   5 seconds ago   Up 4 seconds   0.0.0.0:8282->8080/tcp, :::8282->8080/tcp   keen_hellman
+
+webapp-color on  docker-images [!] via 🐍 ➜  
+
+webapp-color on  docker-images [!] via 🐍 ➜  docker run -d python
+Unable to find image 'python:latest' locally
+latest: Pulling from library/python
+155ad54a8b28: Pull complete 
+8031108f3cda: Pull complete 
+1d281e50d3e4: Pull complete 
+447713e77b4f: Pull complete 
+21754c21aa78: Pull complete 
+854e2aed8deb: Pull complete 
+5e9ad5aa09b4: Pull complete 
+Digest: sha256:34306fdf795b9c55c0d258a00e822399cf20572501f92613755ef036283a1814
+Status: Downloaded newer image for python:latest
+4d5c877cecbb0f2580386a516957c9409097d9c8d3e02f655aac22be7c602dd3
+
+webapp-color on  docker-images [!] via 🐍 ➜  docker ps           
+CONTAINER ID   IMAGE          COMMAND           CREATED         STATUS         PORTS                                       NAMES
+91e5e51c1dfb   webapp-color   "python app.py"   4 minutes ago   Up 4 minutes   0.0.0.0:8282->8080/tcp, :::8282->8080/tcp   keen_hellman
+
+webapp-color on  docker-images [!] via 🐍 ➜  docker exec -it keen_hellman bash
+root@91e5e51c1dfb:/opt# cat /etc/os-release 
+PRETTY_NAME="Debian GNU/Linux 11 (bullseye)"
+NAME="Debian GNU/Linux"
+VERSION_ID="11"
+VERSION="11 (bullseye)"
+VERSION_CODENAME=bullseye
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+root@91e5e51c1dfb:/opt# 
+exit
+
+webapp-color on  docker-images [!] via 🐍 ➜  docker ps                        
+CONTAINER ID   IMAGE          COMMAND           CREATED         STATUS         PORTS                                       NAMES
+91e5e51c1dfb   webapp-color   "python app.py"   5 minutes ago   Up 5 minutes   0.0.0.0:8282->8080/tcp, :::8282->8080/tcp   keen_hellman
+
+webapp-color on  docker-images [!] via 🐍 ➜  ddocker images 
+REPOSITORY                      TAG           IMAGE ID       CREATED         SIZE
+webapp-color                    latest        0bd02cad40cb   6 minutes ago   913MB
+python                          latest        36d17f72f4f3   2 weeks ago     1.02GB
+alpine                          latest        91ef0af61f39   5 months ago    7.79MB
+nginx                           alpine        c7b4f26a7d93   6 months ago    43.2MB
+nginx                           latest        39286ab8a5e1   6 months ago    188MB
+postgres                        latest        b781f3a53e61   6 months ago    432MB
+ubuntu                          latest        edbfe74c41f8   6 months ago    78MB
+redis                           latest        590b81f2fea1   7 months ago    117MB
+mysql                           latest        a82a8f162e18   7 months ago    586MB
+python                          3.6           54260638d07c   3 years ago     902MB
+nginx                           1.14-alpine   8a2fb25a19f5   5 years ago     16MB
+kodekloud/simple-webapp-mysql   latest        129dd9f67367   6 years ago     96.6MB
+kodekloud/simple-webapp         latest        c6e3cd9aae36   6 years ago     84.8MB
+
+webapp-color on  docker-images [!] via 🐍 ➜  ls -ltr
+total 16
+drwxr-xr-x    2 root     root          4096 Feb 25 10:17 templates
+-rw-r--r--    1 root     root             5 Feb 25 10:17 requirements.txt
+-rwxrwxrwx    1 root     root          2259 Feb 25 10:17 app.py
+-rw-r--r--    1 root     root           113 Feb 25 10:17 Dockerfile
+
+webapp-color on  docker-images [!] via 🐍 ➜  vi Dockerfile 
+
+webapp-color on  docker-images [!] via 🐍 ➜  
+
+webapp-color on  docker-images [!] via 🐍 ✖ 
